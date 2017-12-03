@@ -4,21 +4,68 @@ Example Voting App
 Getting started
 ---------------
 
-Download [Docker](https://www.docker.com/products/overview). If you are on Mac or Windows, [Docker Compose](https://docs.docker.com/compose) will be automatically installed. On Linux, make sure you have the latest version of [Compose](https://docs.docker.com/compose/install/).
+Go to [Play with Docker](https://www.play-with-docker.com).
+Use the templates (spanner) choose 3 Managers and 2 Workers
 
-Run in this directory:
+Show members of swarm
+From any terminal, check the number of nodes in the swarm to identify the manager node that's the Leader:
 ```
-docker-compose up
-```
-The app will be running at [http://localhost:5000](http://localhost:5000), and the results will be at [http://localhost:5001](http://localhost:5001).
+docker node ls
 
-Alternately, if you want to run it on a [Docker Swarm](https://docs.docker.com/engine/swarm/), first make sure you have a swarm. If you don't, run:
 ```
-docker swarm init
+
+or
+
 ```
-Once you have your swarm, in this directory run:
+docker node ls | grep Leader
+
+```
+
+On the Leader run these commands:
+
+```
+git clone https://github.com/docker/example-voting-app
+cd example-voting-app
+ls
+```
+
+Lets take a look at Services definded in the docker-compose.yml:
+```
+cat docker-compose.yml
+```
+
+To start the Services in this directory run the following command, the -d will run them in detached mode:
+```
+docker-compose up -d
+```
+
+To view the running Containers:
+```
+docker-compose ps
+```
+
+To access Vote use the 5000 link at the top of the screen, and the Results will be at 5001.
+
+At the moment everything is running on the Leader. 
+
+To stop the Services in this directory run the following command:
+```
+docker-compose down
+```
+
+Let's delpoy this now as a Stack on the [Docker Swarm](https://docs.docker.com/engine/swarm/), in this directory run:
 ```
 docker stack deploy --compose-file docker-stack.yml vote
+```
+
+To view the running Containers in the Stack:
+```
+docker stack ps vote
+```
+
+To rempove the Stack:
+```
+docker stack rm vote
 ```
 
 Architecture
