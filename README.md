@@ -66,7 +66,7 @@ To stop the Services in this directory run the following command:
 docker-compose down
 ```
 
-Stack
+Stack Deploy
 -----
 Let's delpoy this now as a Stack on the [Docker Swarm](https://docs.docker.com/engine/swarm/), in this directory run:
 ```
