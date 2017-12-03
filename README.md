@@ -29,6 +29,19 @@ cd example-voting-app
 ls
 ```
 
+Architecture
+-----
+
+![Architecture diagram](architecture.png)
+
+* A Python webapp which lets you vote between two options
+* A Redis queue which collects new votes
+* A .NET worker which consumes votes and stores them in…
+* A Postgres database backed by a Docker volume
+* A Node.js webapp which shows the results of the voting in real time
+
+Docker Compose
+-----
 Lets take a look at Services definded in the docker-compose.yml:
 ```
 cat docker-compose.yml
@@ -53,6 +66,8 @@ To stop the Services in this directory run the following command:
 docker-compose down
 ```
 
+Stack
+-----
 Let's delpoy this now as a Stack on the [Docker Swarm](https://docs.docker.com/engine/swarm/), in this directory run:
 ```
 docker stack deploy --compose-file docker-stack.yml vote
@@ -67,18 +82,6 @@ To rempove the Stack:
 ```
 docker stack rm vote
 ```
-
-Architecture
------
-
-![Architecture diagram](architecture.png)
-
-* A Python webapp which lets you vote between two options
-* A Redis queue which collects new votes
-* A .NET worker which consumes votes and stores them in…
-* A Postgres database backed by a Docker volume
-* A Node.js webapp which shows the results of the voting in real time
-
 
 Note
 ----
