@@ -8,7 +8,7 @@ Go to [Play with Docker](https://www.play-with-docker.com).
 Use the templates (spanner) choose 3 Managers and 2 Workers
 
 Show members of swarm
-From any terminal, check the number of nodes in the swarm to identify the manager node that's the Leader:
+From any manager terminal, check the number of nodes in the swarm to identify the manager node that's the Leader:
 ```
 docker node ls
 
