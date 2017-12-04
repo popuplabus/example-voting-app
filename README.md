@@ -24,7 +24,7 @@ docker node ls | grep Leader
 On the Leader run these commands:
 
 ```
-git clone https://github.com/docker/example-voting-app
+git clone https://github.com/popuplabus/example-voting-app
 cd example-voting-app
 ls
 ```
